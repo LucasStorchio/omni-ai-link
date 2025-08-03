@@ -2,41 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Design system para plataforma de IA - cores, gradientes, fontes e animações
+Todas as cores DEVEM ser HSL para máxima flexibilidade */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core AI Platform Colors */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* AI Brand Colors - Gradiente azul/roxo tecnológico */
+    --primary: 259 94% 51%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 269 100% 75%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 240 5% 15%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 259 94% 51%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 240 6% 20%;
+    --input: 240 6% 20%;
+    --ring: 259 94% 51%;
 
-    --radius: 0.5rem;
+    /* AI Platform Specific Colors */
+    --ai-purple: 259 94% 51%;
+    --ai-blue: 231 100% 50%;
+    --ai-cyan: 191 100% 50%;
+    --ai-success: 142 76% 36%;
+    --ai-warning: 38 92% 50%;
+    --ai-neural: 280 100% 70%;
+
+    /* Gradientes para efeitos visuais */
+    --gradient-ai-primary: linear-gradient(135deg, hsl(259 94% 51%), hsl(231 100% 50%));
+    --gradient-ai-hero: linear-gradient(135deg, hsl(259 94% 51%), hsl(280 100% 70%), hsl(191 100% 50%));
+    --gradient-ai-subtle: linear-gradient(135deg, hsl(240 10% 3.9%), hsl(240 6% 10%));
+    --gradient-card: linear-gradient(145deg, hsl(240 6% 20% / 0.4), hsl(240 10% 3.9% / 0.4));
+
+    /* Shadows com glow de IA */
+    --shadow-ai-glow: 0 0 50px hsl(259 94% 51% / 0.3);
+    --shadow-neural: 0 10px 30px hsl(259 94% 51% / 0.2);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.3);
+
+    /* Animações e transições */
+    --transition-ai: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: all 0.6s ease-out;
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +125,103 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    background: var(--gradient-ai-subtle);
+  }
+
+  /* Scrollbar personalizada */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/30;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/70 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+}
+
+@layer components {
+  /* Componentes AI específicos */
+  .ai-gradient-text {
+    background: var(--gradient-ai-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ai-glow {
+    box-shadow: var(--shadow-ai-glow);
+    transition: var(--transition-glow);
+  }
+
+  .ai-glow:hover {
+    box-shadow: 0 0 80px hsl(259 94% 51% / 0.5);
+  }
+
+  .neural-animation {
+    animation: neural-pulse 3s ease-in-out infinite;
+  }
+
+  .floating-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: var(--gradient-ai-primary);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+  }
+}
+
+@layer utilities {
+  /* Animações customizadas */
+  @keyframes neural-pulse {
+    0%, 100% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
   }
 }

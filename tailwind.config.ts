@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -52,6 +53,15 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// AI Platform specific colors
+				ai: {
+					purple: 'hsl(var(--ai-purple))',
+					blue: 'hsl(var(--ai-blue))',
+					cyan: 'hsl(var(--ai-cyan))',
+					success: 'hsl(var(--ai-success))',
+					warning: 'hsl(var(--ai-warning))',
+					neural: 'hsl(var(--ai-neural))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -62,6 +72,20 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			backgroundImage: {
+				'gradient-ai-primary': 'var(--gradient-ai-primary)',
+				'gradient-ai-hero': 'var(--gradient-ai-hero)',
+				'gradient-ai-subtle': 'var(--gradient-ai-subtle)',
+				'gradient-card': 'var(--gradient-card)'
+			},
+			boxShadow: {
+				'ai-glow': 'var(--shadow-ai-glow)',
+				'neural': 'var(--shadow-neural)',
+				'card-ai': 'var(--shadow-card)'
+			},
+			transitionTimingFunction: {
+				'ai': 'var(--transition-ai)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
